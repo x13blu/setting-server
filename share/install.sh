@@ -5,18 +5,15 @@ echo $(tput setaf 3)Update repositry $(tput sgr 0)
 apt-get update
 
 
-echo $(tput setaf 3)Install and configure sudo $(tput sgr 0)
-apt-get install sudo
-echo 'setting ALL=(ALL:ALL) ALL' >> /etc/sudoers
-
-
-echo $(tput setaf 3)Install docker dependencies $(tput sgr 0)
+echo $(tput setaf 3)Install dependencies $(tput sgr 0)
 apt-get install \
      apt-transport-https \
      ca-certificates \
      curl \
      gnupg2 \
-     software-properties-common -y
+     software-properties-common \
+     sudo -y
+echo 'setting ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 
 echo $(tput setaf 3)Add repositories docker $(tput sgr 0)
@@ -41,7 +38,7 @@ echo Añadimos comando docker a user setting
 usermod -aG docker setting
 
 
-echo Creamos la red docker
+echo $(tput setaf 3)Creamos la red docker $(tput sgr 0)
 docker network create -d bridge --subnet 172.13.1.0/24 setting-network
 
 
