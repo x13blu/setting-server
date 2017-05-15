@@ -4,7 +4,7 @@
 echo $(tput setaf 3)Creando Gitlab-ce... $(tput sgr 0)
 docker run \
 --detach
---name gitlab-container \
+--name gitlab-ce-container \
 --restart always \
 --network setting-network \
 --ip 172.13.1.10 \

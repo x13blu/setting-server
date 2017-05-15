@@ -1,7 +1,7 @@
 version: '2'
 services:
   gitlab-ce:
-    build: ./h2
+    build: .
     ports:
      - "8082:8082"
      - "9092:9092"

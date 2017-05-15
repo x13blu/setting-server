@@ -1,7 +1,7 @@
 version: '2'
 services:
   gitlab-ce:
-    build: ./wildfly
+    build: .
     ports:
      - "8080:8080"
      - "9990:9990"
