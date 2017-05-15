@@ -1,0 +1,14 @@
+logrotate state -- version 2
+"/var/log/gitlab/nginx/gitlab_error.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-rails/githost.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-rails/application.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-shell//gitlab-shell.log" 2017-5-14-0:58:15
+"/var/log/gitlab/nginx/error.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-workhorse/*.log" 2017-5-13-15:0:0
+"/var/log/gitlab/unicorn/unicorn_stdout.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2017-05-13-15-36-58.log" 2017-5-14-0:58:15
+"/var/log/gitlab/nginx/gitlab_access.log" 2017-5-14-0:58:15
+"/var/log/gitlab/unicorn/unicorn_stderr.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-rails/sidekiq.log" 2017-5-13-15:0:0
+"/var/log/gitlab/nginx/access.log" 2017-5-14-0:58:15
+"/var/log/gitlab/gitlab-rails/production.log" 2017-5-14-0:58:15

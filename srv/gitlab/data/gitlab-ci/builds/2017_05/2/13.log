@@ -1,0 +1,12 @@
+[0KRunning with gitlab-ci-multi-runner 9.1.1 (6104325)
+  on c2d3301c13b7 (03114764)
+[0;m[0KUsing Shell executor...
+[0;mRunning on c2d3301c13b7...
+[32;1mFetching changes...[0;m
+HEAD is now at d341b3c ok
+[32;1mChecking out d341b3cf as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ echo Testing ....[0;m
+Testing ....
+[32;1mJob succeeded
+[0;m

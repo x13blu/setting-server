@@ -1,0 +1,7 @@
+[0KRunning with gitlab-ci-multi-runner 9.1.1 (6104325)
+  on c2d3301c13b7 (03114764)
+[0;m[0KUsing Shell executor...
+[0;mRunning on c2d3301c13b7...
+mkdir: cannot create directory '/home/gitlab-runner/builds': Permission denied
+[31;1mERROR: Job failed: exit status 1
+[0;m

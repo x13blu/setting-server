@@ -1,0 +1,4 @@
+2017-05-13_15:37:45.57355 2017/05/13 15:37:45 Starting Gitaly v0.6.0-20170501.123625
+2017-05-13_15:37:45.57361 2017/05/13 15:37:45 listening on unix socket "/var/opt/gitlab/gitaly/gitaly.socket"
+2017-05-13_15:38:41.64481 2017/05/13 15:38:41 Starting Gitaly v0.6.0-20170501.123625
+2017-05-13_15:38:41.64506 2017/05/13 15:38:41 listening on unix socket "/var/opt/gitlab/gitaly/gitaly.socket"

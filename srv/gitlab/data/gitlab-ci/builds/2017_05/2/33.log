@@ -1,0 +1,14 @@
+[0KRunning with gitlab-ci-multi-runner 9.1.1 (6104325)
+  on shell (03114764)
+[0;m[0KUsing Shell executor...
+[0;mRunning on c2d3301c13b7...
+[32;1mFetching changes...[0;m
+HEAD is now at 760129d ok
+From http://gitlab.ejemplo.dev/root/ejemplo-dwp
+   760129d..7a26c40  master     -> origin/master
+[32;1mChecking out 7a26c40d as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ echo Building ....[0;m
+Building ....
+[32;1mJob succeeded
+[0;m

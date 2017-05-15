@@ -1,0 +1,4 @@
+2017-05-13_18:39:33.55538 time="2017-05-13T18:39:33Z" level=info msg="Redis Metrics Exporter <<< filled in by build >>>    build date: <<< filled in by build >>>    sha1: <<< filled in by build >>>\n" 
+2017-05-13_18:39:33.55545 time="2017-05-13T18:39:33Z" level=info msg="Providing metrics at localhost:9121/metrics" 
+2017-05-13_18:39:33.55545 time="2017-05-13T18:39:33Z" level=info msg="Connecting to redis hosts: []string{\"unix:///var/opt/gitlab/redis/redis.socket\"}" 
+2017-05-13_18:39:33.55546 time="2017-05-13T18:39:33Z" level=info msg="Using alias: []string{\"\"}" 

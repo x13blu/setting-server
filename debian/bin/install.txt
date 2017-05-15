@@ -1,0 +1,191 @@
+
+################
+### Servidor ###
+
+# Credenciales setting-servidor
+root: debian
+password: debian
+user: setting
+password: setting
+
+# Instlar utilidades compartir carpeta
+apt-get install cifs-utils
+
+# Montamos carpeta compartida
+mount -t cifs //192.168.1.224/Users/ocutrin/Desktop/setting-server/share /share
+
+# Add a /etc/network/interfaces file
+auto eth1
+iface eth1 inet dhcp
+
+# Levantar adaptador
+ifconfig eth1 up
+
+# Reiniciamos network
+/etc/init.d/networking restart
+
+##############
+### Docker ###
+
+## Enlace y credenciales boot2docker iso vmhd
+
+# Direccion descarga boot2docker iso
+https://github.com/boot2docker/boot2docker/releases/download/v17.05.0-ce/boot2docker.iso
+
+# Credenciales boot2docker
+user: docker
+password: tcuser
+
+## Instalacion ##
+
+#Instalamos docker en modo root
+
+# Instalamos dependencias necesarias
+apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common -y
+
+# Add repositorio
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
+
+# Actualizamos e instalamos las librerias docker
+apt-get update && apt-get install docker-ce -y
+
+# Add comando docker al user setting
+#groupadd docker
+usermod -aG docker setting
+
+# Creamos red docker
+docker network create -d bridge --subnet 172.13.1.0/24 setting-network
+
+## Imagenes y puesta en marcha de contenedores
+
+# Creamos contenedor gitlab-ce
+docker run \
+--detach \
+--hostname gitlab.ejemplo.dev \
+--publish 443:443 --publish 80:80 --publish 2022:22 \
+--name gitlab-container \
+--restart always \
+--network setting-network \
+--ip 172.13.1.10 \
+--volume /srv/gitlab/config:/etc/gitlab \
+--volume /srv/gitlab/logs:/var/log/gitlab \
+--volume /srv/gitlab/data:/var/opt/gitlab \
+x13blu/gitlab-ce-setting
+
+# Credenciales gitlab-ce
+user: root
+password: gitalbce
+
+# Creamos contenedor gitlab-runner
+docker run \
+--detach \
+--name gitlab-runner-container \
+--restart always \
+--network setting-network \
+--ip 172.13.1.11 \
+--add-host gitlab.ejemplo.dev:172.13.1.10 \
+--volume /srv/gitlab-runner/data:/home/gitlab-runner/:rw \
+--volume /var/run/docker.sock:/var/run/docker.sock \
+x13blu/gitlab-runner-setting
+
+# Creamos contenedor h2
+docker run \
+--detach \
+--name h2-container \
+--restart always \
+--network setting-network \
+--ip 172.13.1.12 \
+--publish 8082:8082 \
+--publish 9092:9092 \
+--volume /srv/h2/data:/opt/h2-data \
+--volume /var/:/opt/h2-data \
+x13blu/h2-setting
+
+# Creamos contenedor wildfly
+docker run \
+--detach \
+--name wildlfy-container \
+--restart always \
+--network setting-network \
+--ip 172.13.1.13 \
+--add-host gitlab.ejemplo.dev:172.13.1.12 \
+--publish 8080:8080 \
+--publish 9990:9990 \
+--volume /srv/wildfly/deployments:/opt/jboss/wildfly/standalone/deployments/:rw \
+--volume /srv/wildfly/configuration:/opt/jboss/wildfly/standalone/configuration/:rw \
+x13blu/wildfly-setting
+
+
+docker run \
+  -it --rm --name maven \
+  -v "$PWD":/src/maven \
+  -w /src/maven \
+  maven:latest \
+  mvn clean install
+
+###############
+### Runners ###
+
+gitlab-runner register -n \
+  --url http://gitlab.ejemplo.dev/ci \
+  --registration-token 9s8sydNoUMsW2Es2A4sw \
+  --executor docker \
+  --description "Docker Runner" \
+  --tag-list docker \
+  --docker-image "docker:latest" \
+  --docker-privileged \
+  --docker-extra-hosts gitlab.ejemplo.dev:192.168.99.102
+
+gitlab-runner register -n \
+  --url http://gitlab.ejemplo.dev/ci \
+  --registration-token 9s8sydNoUMsW2Es2A4sw \
+  --executor shell\
+  --description "Shell Runner" \
+  --tag-list shell
+
+
+  # Archivo gitlab-ci.yml
+
+  image:
+    docker:latest
+
+  services:
+    - docker:dind
+
+  stages:
+    - build
+    - test
+    - deploy
+
+  before_script:
+    - docker info
+
+  build:
+    stage: build
+    script:
+      - echo $BUILD_PASSWORD
+    tags:
+      - docker
+
+  test:
+    stage: test
+    script:
+      - echo $TEST_PASSWORD
+    tags:
+      - shell
+
+  deploy:
+    stage: deploy
+    script:
+      - echo $DEPLOY_PASSWORD
+    tags:
+      - shell

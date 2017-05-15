@@ -1,0 +1,12 @@
+[0KRunning with gitlab-ci-multi-runner 9.1.1 (6104325)
+  on My Shell Runner (1234dbd6)
+[0;m[0KUsing Shell executor...
+[0;mRunning on c2d3301c13b7...
+[32;1mCloning repository...[0;m
+Cloning into '/home/gitlab-runner/builds/1234dbd6/0/root/ejemplo-dwp'...
+[32;1mChecking out 4309722d as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ escho $PASSWORD[0;m
+bash: line 42: escho: command not found
+[31;1mERROR: Job failed: exit status 1
+[0;m

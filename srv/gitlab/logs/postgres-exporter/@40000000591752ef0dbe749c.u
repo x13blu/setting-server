@@ -1,0 +1,3 @@
+2017-05-13_16:32:16.25801 time="2017-05-13T16:32:16Z" level=warning msg="Proceeding with outdated query maps, as the Postgres version could not be determined: Error scanning version string: pq: the database system is starting up\n" source="postgres_exporter.go:1002" 
+2017-05-13_16:32:16.25812 time="2017-05-13T16:32:16Z" level=info msg="Starting Server: localhost:9187" source="postgres_exporter.go:1042" 
+2017-05-13_16:32:23.70572 time="2017-05-13T16:32:23Z" level=info msg="Semantic Version Changed: 0.0.0 -> 9.6.1" source="postgres_exporter.go:945" 

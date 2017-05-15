@@ -1,0 +1,14 @@
+[0KRunning with gitlab-ci-multi-runner 9.1.1 (6104325)
+  on My Shell Runner (1234dbd6)
+[0;m[0KUsing Shell executor...
+[0;mRunning on c2d3301c13b7...
+[32;1mFetching changes...[0;m
+HEAD is now at c25ba1d dsa
+From http://gitlab.ejemplo.dev/root/ejemplo-dwp
+   c25ba1d..747696b  master     -> origin/master
+[32;1mChecking out 747696bc as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ echo $BUILD_PASSWORD[0;m
+setting.build
+[32;1mJob succeeded
+[0;m
