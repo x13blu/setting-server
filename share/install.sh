@@ -31,10 +31,10 @@ echo $(tput setaf 3)Update repositories and install docker $(tput sgr 0)
 apt-get update && apt-get install docker-ce -y
 
 
-echo $(tput setaf 3)Install necessarys packages for share folder $(tput sgr 0)
-apt-get install cifs-utils -y
-mkdir /share
-chmod 777 /share
+#echo $(tput setaf 3)Install necessarys packages for share folder $(tput sgr 0)
+#apt-get install cifs-utils -y
+#mkdir /share
+#chmod 777 /share
 # mount -t cifs //192.168.1.224/share /share
 
 echo Añadimos comando docker a user setting
