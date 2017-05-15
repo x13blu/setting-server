@@ -1,0 +1,12 @@
+version: '2'
+services:
+  gitlab-ce:
+    build: ./gitlab-ce
+    ports:
+     - "80:80"
+     - "443:443"
+     - "2022:22"
+    volumes:
+     - .:/code
+  redis:
+    image: "redis:alpine"

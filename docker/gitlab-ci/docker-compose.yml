@@ -1,6 +1,6 @@
 version: '2'
 services:
   gitlab-ce:
-    build:
-    ports:
+    build: ./gitlab-ci
     volumes:
+     - .:/code
