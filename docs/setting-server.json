@@ -1,7 +1,7 @@
 
 {
-  "machine_name": "setting-server",
-  "hostname": "setting.dev",
+  "hostname": "setting-server",
+  "domainname ": "setting.dev",
   "root_pswd": "settingsettting",
   "user": "setting",
   "pswd": "setting",

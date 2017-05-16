@@ -29,6 +29,7 @@ apt-get update && apt-get install docker-ce -y
 
 
 echo $(tput setaf 3) Añadimos comando docker a user setting $(tput sgr 0)
+groupadd docker
 usermod -aG docker setting
 
 
