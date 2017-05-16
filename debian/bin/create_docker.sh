@@ -3,22 +3,22 @@
 
 echo $(tput setaf 3)Creando Gitlab-ce... $(tput sgr 0)
 docker run \
---detach
+--detach \
 --name gitlab-ce-container \
 --restart always \
 --network setting-network \
 --ip 172.13.1.10 \
---hostname setting.ejemplo.dev \
---publish 443:443
---publish 80:80
+--hostname setting.dev \
+--publish 443:443 \
+--publish 80:80 \
 --publish 2022:22 \
 --volume /srv/gitlab/config:/etc/gitlab \
 --volume /srv/gitlab/logs:/var/log/gitlab \
 --volume /srv/gitlab/data:/var/opt/gitlab \
-gitlab/gitlab-ce:latest
+x13blu/gitlab-ce-setting
 
 
-echo $(tput setaf 3)Creando gitlab-ce-setting... $(tput sgr 0)
+echo $(tput setaf 3)Creando gitlab-runner... $(tput sgr 0)
 docker run \
 --detach \
 --name gitlab-runner-container \

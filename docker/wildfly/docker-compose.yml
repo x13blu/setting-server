@@ -1,9 +1,17 @@
 version: '2'
 services:
   gitlab-ce:
+    name: wildlfy-container
+    restart: always
     build: .
+    networks:
+      setting-network:
+        ipv4_address: 172.13.1.12
     ports:
      - "8080:8080"
      - "9990:9990"
     volumes:
-     - .:/code
+     - /srv/wildfly/deployments:/opt/jboss/wildfly/standalone/deployments/:rw
+     - /srv/wildfly/configuration:/opt/jboss/wildfly/standalone/configuration/:rw
+
+#--add-host gitlab.ejemplo.dev:172.13.1.12 \

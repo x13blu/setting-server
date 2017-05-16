@@ -1,9 +1,14 @@
 version: '2'
 services:
   gitlab-ce:
+    name: h2-container
+    restart: always
     build: .
+    networks:
+      setting-network:
+        ipv4_address: 172.13.1.12
     ports:
      - "8082:8082"
      - "9092:9092"
     volumes:
-     - .:/code
+     - /srv/h2/data:/opt/h2-data

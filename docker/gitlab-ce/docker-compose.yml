@@ -1,12 +1,18 @@
 version: '2'
 services:
   gitlab-ce:
-    build: .
+    image: 'gitlab/gitlab-ce:latest'
+    name: gitlab-ce-container
+    restart: always
+    hostname: setting.dev
+    networks:
+      setting-network:
+        ipv4_address: 172.13.1.10
     ports:
      - "80:80"
      - "443:443"
      - "2022:22"
     volumes:
-     - "/srv/gitlab/config:/etc/gitlab"
-     - "/srv/gitlab/logs:/var/log/gitlab"
-     - "/srv/gitlab/data:/var/opt/gitlab"
+     - /srv/gitlab/config:/etc/gitlab
+     - /srv/gitlab/logs:/var/log/gitlab
+     - /srv/gitlab/data:/var/opt/gitlab
